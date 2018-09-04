@@ -1,0 +1,57 @@
+																										------------------------------------------------ MONGO DB CONFIGURATION ----------------------------------------------------
+																										
+
+1). Adding Mongo DB repository -																										
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+
+2). To create a list file for MongoDB - 
+echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+
+3). sudo apt-get update
+
+4). sudo apt-get install -y mongodb-org
+
+5). Creating mongodb service ->
+
+sudo vim /etc/systemd/system/mongodb.service
+
+[Unit]
+Description=High-performance, schema-free document-oriented database
+After=network.target
+
+[Service]
+User=mongodb
+ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
+
+[Install]
+WantedBy=multi-user.target
+
+6). sudo systemctl start mongodb
+
+7). sudo systemctl status mongodb
+
+8). sudo systemctl enable mongodb 	
+
+9). sudo ufw allow from 52.221.250.120 to any port 27017
+
+10). sudo ufw status
+
+11). copy war file in server
+
+12). sudo mv hopp.war /opt/tomcat/webapps/
+
+13). sudo /opt/tomcat/bin/.startup.sh
+
+14). cd /opt/tomcat/webapps/hopp/META-INF/maven/org.cs.core/cs-core/
+
+15). mongo
+
+16). use hoppdb
+
+17). create user
+
+18). /opt/tomcat/bin/./startup.sh
+
+19). Hit with postman
+
+								----------------------------------------- CONFIGURING SUBDOMAIN-------
